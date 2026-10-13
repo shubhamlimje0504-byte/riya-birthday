@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>For Riya 💗</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Pacifico&family=Quicksand:wght@400;500;600;700&display=swap');
+  :root { --pink:#b69aff; --rose:#8b5cf6; --cream:#fbf8ff; --ink:#45305f; --lilac:#eee5ff; }
+  * { box-sizing:border-box; }
+  body { margin:0; min-height:100vh; color:var(--ink); font-family:'Quicksand',sans-serif; background:linear-gradient(135deg,#f8f1ff,#e8ddff 48%,#f4eaff); overflow-x:hidden; }
+  button,input { font:inherit; }
+  button { cursor:pointer; border:0; }
+  .screen { min-height:100vh; display:none; align-items:center; justify-content:center; padding:24px; position:relative; }
+  .screen.active { display:flex; animation:fadeIn .7s ease both; }
+  @keyframes fadeIn { from{opacity:0;transform:translateY(8px)} to{opacity:1;transform:translateY(0)} }
+  .floaties { position:fixed; inset:0; pointer-events:none; overflow:hidden; z-index:0; }
+  .floaties span { position:absolute; font-size:clamp(16px,2vw,27px); opacity:.45; animation:float 7s ease-in-out infinite; }
+  @keyframes float { 0%,100%{transform:translateY(0) rotate(-8deg)} 50%{transform:translateY(-22px) rotate(8deg)} }
+  .card { position:relative; z-index:1; width:min(100%,520px); text-align:center; padding:clamp(28px,6vw,52px); border:1px solid #ffffffc9; border-radius:30px; background:#ffffffc7; box-shadow:0 24px 70px #8e69c92b; backdrop-filter:blur(12px); }
+  .eyebrow { text-transform:uppercase; letter-spacing:3px; font-size:11px; font-weight:700; color:#8b69bd; }
+  h1,h2 { margin:12px 0; line-height:1.2; }
+  h1 { font-family:'Pacifico',cursive; font-size:clamp(35px,7vw,54px); font-weight:400; color:#8050bd; }
+  h2 { font-size:clamp(25px,5vw,34px); }
+  p { line-height:1.7; }
+  .heart { color:#f26896; }
+  .password-row { display:flex; gap:9px; margin:25px auto 12px; max-width:350px; }
+  input { min-width:0; flex:1; padding:14px 16px; border:1px solid #d8c8f1; border-radius:14px; outline:none; background:#fffafc; color:var(--ink); text-align:center; letter-spacing:5px; }
+  input:focus { border-color:var(--pink); box-shadow:0 0 0 3px #a78bfa33; }
+  .btn { padding:13px 22px; border-radius:999px; color:white; font-weight:700; background:linear-gradient(135deg,#b79aff,#8b5cf6); box-shadow:0 8px 20px #895be52e; transition:transform .2s,box-shadow .2s; }
+  .btn:hover { transform:translateY(-2px); box-shadow:0 12px 24px #ef659448; }
+  .btn.secondary { background:#fff; color:#7952b3; border:1px solid #d8c5f5; box-shadow:none; }
+  .hint,.small { color:#8b79a3; font-size:13px; }
+  .error { color:#8050bd; min-height:20px; font-size:14px; }
+  .guess-options { display:grid; grid-template-columns:1fr 1fr; gap:11px; margin:24px 0 12px; }
+  .guess-option { padding:15px 10px; border-radius:17px; color:#92516f; background:#faf6ff; border:1px solid #d8c5f5; box-shadow:0 5px 14px #8f69c920; transition:transform .18s,background .18s; }
+  .guess-option:hover { transform:translateY(-3px) rotate(-1deg); background:#eee4ff; }
+  .guess-option.correct { background:#e7f8e9; border-color:#9fd9ad; color:#39764a; }
+  .guess-option.wrong { animation:shake .28s; background:#fff0f0; border-color:#f3a8b2; }
+  @keyframes shake { 25%{transform:translateX(-4px)} 75%{transform:translateX(4px)} }
+  .bts-badge { display:inline-block; border-radius:999px; background:#5c3a9d; color:#fff; padding:7px 14px; font-size:12px; letter-spacing:2px; font-weight:700; }
+  .cake-bts { position:absolute; z-index:6; top:64px; left:0; right:0; font-weight:700; color:#6d48a8; font-size:13px; letter-spacing:2px; text-shadow:0 1px #fff; }
+  .cake-rosettes { position:absolute; z-index:7; top:-15px; left:-5%; width:110%; height:86px; border-radius:50%; border:13px dotted #eabbdc; box-shadow:0 0 0 7px #bda6e8, inset 0 0 0 5px #fff0fa; pointer-events:none; }
+  .cake-drips { position:absolute; z-index:4; top:52px; left:0; width:100%; height:82px; pointer-events:none; }
+  .cake-drips i { position:absolute; top:0; width:7px; height:45px; border-radius:0 0 8px 8px; background:#fff9ff; box-shadow:0 2px 2px #ad8dcb33; }
+  .cake-drips i:nth-child(1){left:8%;height:32px}.cake-drips i:nth-child(2){left:19%;height:58px}.cake-drips i:nth-child(3){left:32%;height:39px}.cake-drips i:nth-child(4){left:46%;height:69px}.cake-drips i:nth-child(5){left:60%;height:48px}.cake-drips i:nth-child(6){left:73%;height:62px}.cake-drips i:nth-child(7){left:87%;height:36px}
+  .member-heart { position:absolute; z-index:9; top:-37px; font-size:12px; line-height:1.05; text-align:center; color:#59417c; background:#ffeaf5; border:2px solid #a991d1; border-radius:50% 50% 48% 48%; padding:8px 5px; width:47px; height:42px; box-shadow:0 2px 0 #fff; }
+  .member-heart:after { content:''; position:absolute; left:16px; bottom:-7px; width:10px; height:10px; background:#ffeaf5; border-right:2px solid #a991d1; border-bottom:2px solid #a991d1; transform:rotate(45deg); }
+  .cake-bow { position:absolute; z-index:10; bottom:0; left:50%; transform:translateX(-50%); width:76px; height:30px; }
+  .cake-bow:before,.cake-bow:after { content:''; position:absolute; top:0; width:36px; height:27px; background:#f2c6df; border:2px solid #e4a9cd; border-radius:80% 20% 70% 30%; }
+  .cake-bow:before { left:0; transform:rotate(25deg); }.cake-bow:after { right:0; transform:scaleX(-1) rotate(25deg); }
+  .cake-bow span { position:absolute; z-index:2; left:30px; top:8px; width:16px; height:16px; border-radius:50%; background:#e7a9d0; }
+  .cake-topper-photo { position:absolute; z-index:8; top:8px; left:16%; width:68%; height:43px; display:flex; align-items:center; justify-content:center; gap:3px; border-radius:50%; background:linear-gradient(135deg,#d9c8f6,#f8d9e9); color:#5e4285; font-size:11px; font-weight:700; border:2px solid #fff; }
+  .final-screen { background:linear-gradient(180deg,#e8dcff,#d4c1ff 45%,#f2e8ff); }
+  .army-heart { color:#8b6cc8; }
+  /* Cake */
+  .cake-stage { width:min(100%,620px); text-align:center; position:relative; z-index:1; }
+  .cake-stage h2 { font-family:'Pacifico',cursive; font-weight:400; color:#8050bd; font-size:clamp(28px,5vw,40px); }
+  .cake-instruction { margin:4px 0 18px; color:#916c88; }
+  .cake-wrap { position:relative; width:min(82vw,390px); height:320px; margin:0 auto; display:flex; align-items:flex-end; justify-content:center; }
+  .plate { position:absolute; bottom:18px; width:100%; height:50px; border-radius:50%; background:linear-gradient(#fff,#e9def8); border:4px solid #fff; box-shadow:0 12px 24px #a66d8426; }
+  .cake { position:absolute; bottom:36px; width:78%; height:170px; transition:transform .7s; }
+  .cake-base { position:absolute; bottom:0; width:100%; height:125px; border-radius:20px 20px 30px 30px; background:linear-gradient(90deg,#c7b2e8,#d8c8f2 45%,#bda6e3); border:4px solid #fff; box-shadow:inset 0 -10px #bca3e8; }
+  .cake-top { position:absolute; top:0; width:100%; height:64px; border-radius:50%; background:#fffaff; border:5px solid #d9c6fa; box-shadow:inset 0 -7px #c9b4f3; z-index:2; }
+  .frosting-drip { position:absolute; top:39px; left:0; width:100%; height:36px; z-index:3; background:radial-gradient(ellipse at 12% 0,#fffaff 0 18px,transparent 19px),radial-gradient(ellipse at 35% 0,#fffaff 0 15px,transparent 16px),radial-gradient(ellipse at 60% 0,#fffaff 0 18px,transparent 19px),radial-gradient(ellipse at 84% 0,#fffaff 0 17px,transparent 18px); }
+  .cake-writing { position:absolute; z-index:4; top:16px; left:0; right:0; font-family:'Pacifico',cursive; color:#8050bd; font-size:18px; transform:rotate(-3deg); }
+  .sprinkle { position:absolute; z-index:4; font-size:19px; }
+  .candle { position:absolute; z-index:5; top:-32px; width:9px; height:40px; border-radius:4px; background:repeating-linear-gradient(135deg,#fff 0 5px,#ff8eae 5px 10px); }
+  .flame { position:absolute; top:-17px; left:1px; width:8px; height:14px; background:#ffc857; border-radius:50% 50% 45% 45%; box-shadow:0 0 14px #ffba55; animation:flicker .55s infinite alternate; }
+  @keyframes flicker { from{transform:scale(1) rotate(-5deg)} to{transform:scale(.82) rotate(6deg)} }
+  .knife { position:absolute; right:7%; top:35px; font-size:46px; transform:rotate(-30deg); filter:drop-shadow(0 5px 3px #8d536633); }
+  .cut-button { margin-top:6px; }
+  .cake.cut .cake-base { clip-path:polygon(0 0,100% 0,100% 100%,0 100%); }
+  .cake.cut { transform:rotate(-4deg) translateX(-5px); }
+  .cake.cut:after { content:''; position:absolute; z-index:8; right:5%; top:42px; height:124px; width:5px; background:#f5a1bd; transform:rotate(22deg); border-radius:5px; }
+  .modal { position:fixed; inset:0; display:none; align-items:center; justify-content:center; padding:22px; background:#352235a6; z-index:10; }
+  .modal.show { display:flex; animation:fadeIn .35s ease both; }
+  .modal-box { max-width:430px; width:100%; background:#fcf8ff; padding:36px 28px; text-align:center; border-radius:26px; box-shadow:0 25px 70px #35182f55; }
+  .modal-box h2 { color:#8050bd; font-family:'Pacifico',cursive; font-weight:400; }
+  .note { background:#fcf9ff; border:1px solid #e0d2f5; border-radius:6px; padding:clamp(24px,5vw,42px); text-align:left; box-shadow:8px 12px 0 #d9a9c01c; transform:rotate(-1deg); }
+  .note h2 { font-family:'Pacifico',cursive; color:#8050bd; font-weight:400; }
+  .note p { font-size:15px; }
+  .signature { font-family:'Pacifico',cursive; color:#8050bd; font-size:21px; }
+  .letter-actions { display:flex; justify-content:center; gap:10px; flex-wrap:wrap; margin-top:24px; }
+  .confetti { position:fixed; top:-15px; z-index:20; pointer-events:none; animation:fall 3.4s linear forwards; }
+  @keyframes fall { to{transform:translateY(110vh) rotate(720deg);opacity:.15} }
+  .final-screen { background:linear-gradient(180deg,#e8dcff,#d4c1ff 45%,#f2e8ff); }
+  .final-screen .card { background:#ffffffa6; }
+  @media(max-width:480px) { .guess-options{grid-template-columns:1fr} .password-row{flex-direction:column} .cake-wrap{height:280px} .cake{height:150px} .cake-base{height:110px} .cake-top{height:58px} .cake-writing{font-size:15px} }
+  @media(prefers-reduced-motion:reduce) { *,*:before,*:after{animation-duration:.01ms!important;animation-iteration-count:1!important;scroll-behavior:auto!important;transition:none!important} }
+</style>
+</head>
+<body>
+<div class="floaties" aria-hidden="true">
+  <span style="left:8%;top:12%">♡</span><span style="left:86%;top:17%;animation-delay:-2s">✿</span>
+  <span style="left:15%;top:76%;animation-delay:-3s">♥</span><span style="left:90%;top:73%;animation-delay:-1s">♡</span>
+  <span style="left:48%;top:7%;animation-delay:-4s">✧</span><span style="left:73%;top:88%;animation-delay:-2s">♡</span>
+</div>
+
+<main>
+  <section class="screen active" id="placeGameScreen">
+    <div class="card">
+      <div class="eyebrow">Level 1 · our little secret</div>
+      <div style="font-size:46px;margin:14px 0">🕵️‍♀️💗🔎</div>
+      <h1>Guess our favourite place!</h1>
+      <p>Hint: somewhere at school… and definitely a place with a story. 🤭</p>
+      <div class="guess-options">
+        <button class="guess-option" data-answer="library">📚 The library</button>
+        <button class="guess-option" data-answer="canteen">🍟 The canteen</button>
+        <button class="guess-option" data-answer="bathroom">🚪 School Bathroom 👀</button>
+        <button class="guess-option" data-answer="playground">🏸 The playground</button>
+      </div>
+      <div class="error" id="placeError" role="status" aria-live="polite"></div>
+      <p class="hint">Choose carefully, bestie… you know this one! ♡</p>
+    </div>
+  </section>
+
+  <section class="screen" id="passwordScreen">
+    <div class="card">
+      <div class="eyebrow">Level 2 · a little surprise for you</div>
+      <div style="font-size:42px;margin-top:16px">🎀 💌 🎀</div>
+      <h1>Hey, Riyaaa!</h1>
+      <p>Someone has made a tiny world of love just for you. 💗</p>
+      <h2 style="font-size:20px;margin-top:28px">Can you guess the secret password?</h2>
+      <form id="passwordForm">
+        <div class="password-row">
+          <input id="passwordInput" type="password" inputmode="numeric" maxlength="12" placeholder="Enter password..." aria-label="Secret password" autocomplete="off" />
+          <button class="btn" type="submit">Unlock ♡</button>
+        </div>
+      </form>
+      <div class="error" id="passwordError" role="status" aria-live="polite"></div>
+      <p class="hint">Hint: a little number with a special meaning ✨</p>
+    </div>
+  </section>
+
+  <section class="screen" id="cakeScreen">
+    <div class="cake-stage">
+      <div class="bts-badge">보라해 · BTS 💜</div>
+      <h2>You did it, Riya! ♡</h2>
+      <p class="cake-instruction">A little BTS magic for our birthday girl… make a wish! 💜✨</p>
+      <div class="cake-wrap">
+        <div class="plate"></div>
+        <div class="cake" id="cake">
+          <div class="cake-base"></div><div class="cake-top"></div><div class="frosting-drip"></div>
+          <div class="cake-writing">Happy Birthday<br>Riya 💜</div>
+          <div class="cake-bts">BTS · ARMY 💜</div>
+          <span class="sprinkle" style="top:80px;left:13%">♥</span><span class="sprinkle" style="top:100px;right:14%">♡</span>
+          <span class="sprinkle" style="top:125px;left:28%">✦</span><span class="sprinkle" style="top:132px;right:28%">♥</span>
+          <span class="candle" style="left:22%"><i class="flame"></i></span>
+          <span class="candle" style="left:39%;top:-42px"><i class="flame"></i></span>
+          <span class="candle" style="left:57%;top:-38px"><i class="flame"></i></span>
+          <span class="candle" style="left:75%;top:-32px"><i class="flame"></i></span>
+        </div>
+        <div class="knife" id="knife" aria-hidden="true">🔪</div>
+      </div>
+      <button class="btn cut-button" id="cutCakeButton">Cut the cake! 🎂</button>
+      <p class="small">Purple hearts, BTS vibes, and all my love for you. 💜</p>
+      <p class="small">Tap to cut the cake and hear your birthday tune ♫</p>
+    </div>
+  </section>
+
+  <section class="screen" id="letterScreen">
+    <div class="card" style="max-width:650px">
+      <div class="eyebrow">Just for you, with all my heart</div>
+      <h1 style="font-size:clamp(32px,6vw,45px)">A little letter 💌</h1>
+      <p>Because you deserve more than just a birthday wish…</p>
+      <div class="note">
+        <h2>Dear Riya, 💗</h2>
+        <p>Happy Birthday to my favourite person. I hope today reminds you of how precious, beautiful, and loved you are.</p>
+        <p>Your smile has a way of making ordinary moments feel special, and your presence brings a kind of happiness that words can never fully explain. I hope this new year of your life gives you a thousand reasons to smile, dreams that come true, peaceful days, exciting adventures, and all the love your heart can hold.</p>
+        <p>Whenever life feels difficult, I hope you remember how strong you are and how much light you carry inside you. Never stop being your sweet, silly, wonderful self. The world is a little brighter with you in it, and I feel lucky to have you in my life.</p>
+        <p>Today is all about you, so make a wish, eat an extra slice of cake, laugh as loudly as you want, and let yourself feel special — because you truly are. 🥹💕</p>
+        <p class="signature">Happy Birthday, Riyaaa…!!!</p>
+        <p>With all my love, always and forever. ♡</p>
+      </div>
+      <div class="letter-actions">
+        <button class="btn" id="finalButton">One last little surprise ✨</button>
+        <button class="btn secondary" id="replayButton">Replay from start ↺</button>
+      </div>
+    </div>
+  </section>
+
+  <section class="screen final-screen" id="finalScreen">
+    <div class="card">
+      <div style="font-size:48px">🌙 💗 ✨</div>
+      <div class="eyebrow">For my birthday girl</div>
+      <h1>Happy Birthday,<br>Riyaaa!</h1>
+      <p style="font-size:19px">My love, today and every day, I hope you feel as loved as you make me feel. ♡</p>
+      <p>May your year be full of soft moments, big dreams, silly laughs, warm hugs, and beautiful surprises.</p>
+      <div style="font-size:28px;margin:20px">♡ ♥ ♡</div>
+      <button class="btn" id="againButton">Read your letter again 💌</button>
+    </div>
+  </section>
+</main>
+
+<div class="modal" id="birthdayModal" role="dialog" aria-modal="true" aria-labelledby="birthdayTitle">
+  <div class="modal-box">
+    <div style="font-size:42px">🎉 🎂 💜</div>
+    <div class="bts-badge">BTS ARMY BIRTHDAY SPECIAL</div>
+    <h2 id="birthdayTitle">Happy birthday Riyaaa..!!!</h2>
+    <p style="font-size:21px;font-weight:700">my love ♡</p>
+    <p> borahae, birthday girl! 💜</p>
+    <p>You deserve all the sweetness in the world.</p>
+    <button class="btn" id="continueButton">Open your letter 💌</button>
+  </div>
+</div>
+
+<script>
+  const screens = [...document.querySelectorAll('.screen')];
+  function showScreen(id) {
+    screens.forEach(s => s.classList.toggle('active', s.id === id));
+    window.scrollTo({top:0,behavior:'smooth'});
+  }
+  document.querySelectorAll('.guess-option').forEach(button => {
+    button.addEventListener('click', () => {
+      const message = document.getElementById('placeError');
+      if (button.dataset.answer === 'bathroom') {
+        document.querySelectorAll('.guess-option').forEach(b => {
+          b.disabled = true;
+          if (b.dataset.answer === 'bathroom') b.classList.add('correct');
+        });
+        message.textContent = 'HAHA YESSS 😭💕 SCHOOL BATHROOM!! Our iconic favourite place. You got it!';
+        setTimeout(() => showScreen('passwordScreen'), 1800);
+      } else {
+        button.classList.add('wrong');
+        message.textContent = 'Nopeee 🤭 try again! Think of our legendary school memories…';
+        setTimeout(() => button.classList.remove('wrong'), 450);
+      }
+    });
+  });
+
+  document.getElementById('passwordForm').addEventListener('submit', (event) => {
+    event.preventDefault();
+    const input = document.getElementById('passwordInput');
+    const error = document.getElementById('passwordError');
+    if (input.value === '1310') {
+      error.textContent = '';
+      showScreen('cakeScreen');
+    } else {
+      error.textContent = 'Oopsie! That is not the password. Try again, cutie. ♡';
+      input.value = '';
+      input.focus();
+    }
+  });
+
+  // A tiny original melody made with the browser's built-in audio oscillator.
+  // Browsers allow it after the visitor taps a button; no audio file is needed.
+  function playBirthdayTune() {
+    const AudioCtx = window.AudioContext || window.webkitAudioContext;
+    if (!AudioCtx) return;
+    const ctx = new AudioCtx();
+    const notes = [
+      [659,0],[659,.22],[698,.44],[659,.72],[880,.98],[784,1.38],
+      [659,1.9],[659,2.12],[698,2.34],[659,2.62],[988,2.88],[880,3.28],
+      [659,3.8],[659,4.02],[1318,4.24],[1109,4.52],[880,4.8],[784,5.2],[698,5.6]
+    ];
+    notes.forEach(([freq, start]) => {
+      const osc = ctx.createOscillator();
+      const gain = ctx.createGain();
+      osc.type = 'sine'; osc.frequency.value = freq;
+      gain.gain.setValueAtTime(0.0001, ctx.currentTime + start);
+      gain.gain.exponentialRampToValueAtTime(0.16, ctx.currentTime + start + .025);
+      gain.gain.exponentialRampToValueAtTime(0.0001, ctx.currentTime + start + .2);
+      osc.connect(gain); gain.connect(ctx.destination);
+      osc.start(ctx.currentTime + start); osc.stop(ctx.currentTime + start + .22);
+    });
+    setTimeout(() => ctx.close(), 7000);
+  }
+  function confettiBurst() {
+    const symbols = ['💗','♡','✦','🎉','🌸','✨'];
+    for (let i=0; i<55; i++) {
+      const piece = document.createElement('span');
+      piece.className = 'confetti';
+      piece.textContent = symbols[Math.floor(Math.random()*symbols.length)];
+      piece.style.left = Math.random()*100 + 'vw';
+      piece.style.fontSize = (12 + Math.random()*20) + 'px';
+      piece.style.animationDelay = (Math.random()*.9) + 's';
+      document.body.appendChild(piece);
+      setTimeout(() => piece.remove(), 4500);
+    }
+  }
+  let cakeCut = false;
+  document.getElementById('cutCakeButton').addEventListener('click', () => {
+    if (cakeCut) return;
+    cakeCut = true;
+    document.getElementById('cake').classList.add('cut');
+    document.getElementById('knife').style.opacity = '0';
+    document.getElementById('cutCakeButton').textContent = 'Cake cut! 💗';
+    confettiBurst();
+    playBirthdayTune();
+    document.getElementById('birthdayModal').classList.add('show');
+  });
+  document.getElementById('continueButton').addEventListener('click', () => {
+    document.getElementById('birthdayModal').classList.remove('show');
+    showScreen('letterScreen');
+  });
+  document.getElementById('finalButton').addEventListener('click', () => {
+    showScreen('finalScreen'); confettiBurst();
+  });
+  document.getElementById('againButton').addEventListener('click', () => showScreen('letterScreen'));
+  document.getElementById('replayButton').addEventListener('click', () => {
+    cakeCut = false;
+    document.getElementById('cake').classList.remove('cut');
+    document.getElementById('knife').style.opacity = '1';
+    document.getElementById('cutCakeButton').textContent = 'Cut the cake! 🎂';
+    document.getElementById('passwordInput').value = '';
+    document.querySelectorAll('.guess-option').forEach(b => { b.disabled = false; b.classList.remove('correct','wrong'); });
+    document.getElementById('placeError').textContent = '';
+    showScreen('placeGameScreen');
+  });
+</script>
+</body>
+</html>
